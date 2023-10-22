@@ -16,10 +16,7 @@ export default function Header(){
         <div className='hidden md:flex items-center text-black'>
           <ul className='flex items-center'>
             <li className="mr-4">
-              <a href={ '#' } className="btn btn-primary">Nuevo link</a>
-            </li>
-            <li key={2} className="mx-4">
-              <a href={ '#' }>Links</a>
+              <a href={ '/' } className="btn btn-primary">Nuevo link</a>
             </li>
           </ul>
         </div>
