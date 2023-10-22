@@ -2,6 +2,8 @@
 
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react';
+import intlTelInput from 'intl-tel-input';
+import 'intl-tel-input/build/css/intlTelInput.css';
 
 import SimpleQR from './SimpleQR';
 import { CopyToClipboardDirect } from 'utils/copyToClipboard'
@@ -10,10 +12,12 @@ export default function WhatsappLink(){
 
   const searchParams = useSearchParams()
   const [qrText, setQrText] = useState(searchParams.get('url') || process.env.NEXT_PUBLIC_FRONTEND_URL)
+  const [dialCode, setDialCode] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [text, setText] = useState('')
   const [linkWsp, setLinkWsp] = useState('')
   const [showQR, setShowQR] = useState('')
+  let iti = undefined
 
   const handlePhoneNumber = (event) => {
     setPhoneNumber(event.target.value)
@@ -24,10 +28,32 @@ export default function WhatsappLink(){
   }
 
   useEffect(() => {
-    const wl = generateWspLink(phoneNumber, text)
+    const input = document.querySelector("#phone-number");
+    const getCountry = {
+      customContainer: 'w-full',
+      initialCountry: "auto",
+      geoIpLookup: function(callback) {
+        fetch("https://ipapi.co/json")
+          .then(function(res) { return res.json(); })
+          .then(function(data) { callback(data.country_code); })
+          .catch(function() { callback("us"); });
+      }
+    }
+    input.addEventListener("countrychange", function() {
+      const countryData = iti.getSelectedCountryData()
+      const fullDialCode = `+${countryData.dialCode}`
+      console.log(fullDialCode)
+      setDialCode(fullDialCode)
+    });
+    iti = intlTelInput(input, getCountry);
+  }, [])
+
+  useEffect(() => {
+    console.log(dialCode, phoneNumber, text)
+    const wl = generateWspLink(dialCode + phoneNumber, text)
     setLinkWsp( wl )
     setQrText(wl)
-  }, [phoneNumber, text]);
+  }, [dialCode, phoneNumber, text]);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -52,13 +78,19 @@ export default function WhatsappLink(){
                 <label className="text-lg font-black">
                   Ingresa tu número (código de páis)
                 </label>
-                <input className="input-border w-full mb-8 mt-2" type="tel" pattern="^\+\d{1,3}\d{4,14}$"
-                  placeholder="" onChange={handlePhoneNumber}>
-                </input>
+
+                <div className='mt-2 mb-8'>
+                  <input id="phone-number" className="input-border w-full mb-8 mt-2" type="text"
+                    placeholder="" onChange={handlePhoneNumber}>
+                  </input>
+                </div>
+
                 <label className="text-lg font-black">
                   Texto de bienvenida
                 </label>
+
                 <input className="input-border w-full mb-8 mt-2" defaultValue={text} placeholder="" onChange={handleText}></input>
+
                 <div className='text-center'>
                   <button className='btn btn-primary'>Generar link de Whatsapp</button>
                 </div>
@@ -69,7 +101,7 @@ export default function WhatsappLink(){
           <div className="w-full md:w-1/2 flex flex-col items-center">
             <div className="relative">
               <img id="wsp-contact" src="/wsp-contact.svg"></img>
-              <span id="wsp-number">{phoneNumber}</span>
+              <span id="wsp-number">{dialCode + ' ' + phoneNumber}</span>
               <span id="wsp-text">{text || 'Hola!'}</span>
               <img id="wsp-chat" src='/chat.png'></img>
             </div>

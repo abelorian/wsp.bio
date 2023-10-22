@@ -4,7 +4,7 @@ export default function Footer(){
       <div className="p-4 mx-auto">
         <div className="flex flex-wrap">
             <div className="w-full md:w-1/4 mb-8 px-4">
-                <img src="/images/logo3.svg" alt="Logo miniurl" className="logo-inverse w-24" />
+                <img src="/favicon.svg" alt="Logo wspBio" className="logo-inverse w-10" />
                 <div className="mt-4">
                     <p className="text-gray-500 text-sm">Conoce de manera simple como interactúa tu audiencia con el contenido que publicas.</p>
                 </div>
