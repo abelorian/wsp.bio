@@ -76,7 +76,7 @@ export default function WhatsappLink(){
           <div className='w-full md:w-1/2'>
               <form className='w-full' onSubmit={onSubmit}>
                 <label className="text-lg font-black">
-                  Ingresa tu número (código de páis)
+                  Ingresa tu número
                 </label>
 
                 <div className='mt-2 mb-8'>
