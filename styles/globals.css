@@ -57,3 +57,34 @@ body {
   background: #1FAB57;
   color: white
 }
+
+#wsp-contact {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  left: 20px;
+  border-radius: 20px;
+}
+
+#wsp-number {
+  position: absolute;
+  top: 12px;
+  left: 60px;
+  font-weight: 600;
+}
+
+#wsp-text {
+  position: absolute;
+  top: 80px;
+  right: 20px;
+  background: #e1ffc7;
+  max-width: 250px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#wsp-chat {
+  border: 3px solid black;
+  border-radius: 30px;
+}

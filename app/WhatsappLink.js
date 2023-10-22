@@ -67,8 +67,11 @@ export default function WhatsappLink(){
           </div>
 
           <div className="w-full md:w-1/2 flex flex-col items-center">
-            <div>
-              <h1>Un link es más facil de compartir</h1>
+            <div className="relative">
+              <img id="wsp-contact" src="/wsp-contact.svg"></img>
+              <span id="wsp-number">{phoneNumber}</span>
+              <span id="wsp-text">{text || 'Hola!'}</span>
+              <img id="wsp-chat" src='/chat.png'></img>
             </div>
           </div>
 

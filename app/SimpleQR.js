@@ -80,8 +80,8 @@ function OptionButtons({ options, setColor, setType }) {
         Elige la forma
       </label>
       <div className="mt-2 mb-4">
-        <button className={`btn border mr-1 rounded-md border-gray-400 ${ options.dotsOptions.type === 'square' ? 'btn-light' : 'text-black' }`} onClick={() => setType('square')}>Cuadrado</button>
-        <button className={`btn border mr-1 rounded-md border-gray-400 ${ options.dotsOptions.type === 'rounded' ? 'btn-light' : 'text-black' }`} onClick={() => setType('rounded')}>Redondo</button>
+        <button className={`btn border mr-1 rounded-md border-gray-400 ${ options.dotsOptions.type === 'square' ? 'font-bold' : '' }`} onClick={() => setType('square')}>Cuadrado</button>
+        <button className={`btn border mr-1 rounded-md border-gray-400 ${ options.dotsOptions.type === 'rounded' ? 'font-bold' : '' }`} onClick={() => setType('rounded')}>Redondo</button>
       </div>
     </div>
   )

@@ -6,7 +6,7 @@ export default function Header(){
 
 
   return (
-    <header className={`z-10 p-3 md:p-4 shadow-sm shadow-neutral-200 header-sticky`}>
+    <header className={`z-10 p-3 md:p-4 shadow-sm shadow-neutral-200 header-sticky bg-white`}>
       <div className='container mx-auto flex justify-between'>
         <div className='font-medium text-3xl text-neutral-950'>
           <a href='/'>
