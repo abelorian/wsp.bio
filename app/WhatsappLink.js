@@ -71,7 +71,7 @@ export default function WhatsappLink(){
         <p className="mt-6 text-gray-600 text-sm md:text-base">¡Haz que tu negocio esté siempre a solo un clic de distancia!</p>
       </div>
 
-      <div className='w-full flex flex-wrap px-4 md:px-16 my-10'>
+      <div className='w-full flex flex-wrap px-4 md:px-16 my-8'>
 
           <div className='w-full md:w-1/2'>
               <form className='w-full' onSubmit={onSubmit}>
@@ -93,7 +93,7 @@ export default function WhatsappLink(){
                 <div className='text-center'>
                   <button className='btn btn-primary'>Generar link de Whatsapp</button>
                 </div>
-                <hr className="my-12"></hr>
+                <hr className="my-8 md:my-12"></hr>
               </form>
           </div>
 
