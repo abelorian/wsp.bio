@@ -82,6 +82,7 @@ body {
   max-width: 250px;
   padding: 10px;
   border-radius: 10px;
+  word-wrap: break-word;
 }
 
 #wsp-chat {

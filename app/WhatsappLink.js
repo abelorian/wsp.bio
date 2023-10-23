@@ -66,7 +66,7 @@ export default function WhatsappLink(){
       {
         showQR ? <FullScreenModal linkWsp={ linkWsp } setShowQR={setShowQR} /> : null
       }
-      <div className="my-10 text-center">
+      <div className="my-4 md:my-10 text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-center">Generador de links de Whatsapp</h1>
         <p className="mt-6 text-gray-600 text-sm md:text-base">¡Haz que tu negocio esté siempre a solo un clic de distancia!</p>
       </div>
@@ -80,8 +80,7 @@ export default function WhatsappLink(){
                 </label>
 
                 <div className='mt-2 mb-8'>
-                  <input id="phone-number" className="input-border w-full mb-8 mt-2" type="text"
-                    placeholder="" onChange={handlePhoneNumber}>
+                  <input id="phone-number" className="input-border w-full mb-8 mt-2" type="text" maxLength={16} onChange={handlePhoneNumber}>
                   </input>
                 </div>
 
@@ -100,10 +99,10 @@ export default function WhatsappLink(){
 
           <div className="w-full md:w-1/2 flex flex-col items-center">
             <div className="relative">
-              <img id="wsp-contact" src="/wsp-contact.svg"></img>
+              <img id="wsp-contact" src="/assets/wsp-contact.svg"></img>
               <span id="wsp-number">{dialCode + ' ' + phoneNumber}</span>
               <span id="wsp-text">{text || 'Hola!'}</span>
-              <img id="wsp-chat" src='/chat.png'></img>
+              <img id="wsp-chat" src='/assets/chat.jpg'></img>
             </div>
           </div>
 
