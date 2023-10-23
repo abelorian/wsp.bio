@@ -22,7 +22,7 @@ body {
 .input-border {
   outline: 1px solid gray;
   border-radius: 5px;
-  height: 50px;
+  height: 45px;
   padding: 0 10px;
   transition: outline 0.1s;
 }
@@ -30,7 +30,6 @@ body {
 .input-border:focus, .input-border:hover {
   outline: 2px solid lime;
 }
-
 
 .btn {
   border-radius: 0.25rem;
@@ -88,4 +87,9 @@ body {
 #wsp-chat {
   border: 3px solid black;
   border-radius: 30px;
+}
+
+
+#domain-input {
+  padding: 0.6rem 0.5rem;
 }

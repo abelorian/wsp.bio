@@ -7,6 +7,7 @@ import 'intl-tel-input/build/css/intlTelInput.css';
 
 import SimpleQR from './SimpleQR';
 import { CopyToClipboardDirect } from 'utils/copyToClipboard'
+import UserDialog from './UserDialog';
 
 export default function WhatsappLink(){
 
@@ -15,6 +16,7 @@ export default function WhatsappLink(){
   const [dialCode, setDialCode] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [text, setText] = useState('')
+  const [key, setKey] = useState('')
   const [linkWsp, setLinkWsp] = useState('')
   const [showQR, setShowQR] = useState('')
   let iti = undefined
@@ -66,6 +68,7 @@ export default function WhatsappLink(){
       {
         showQR ? <FullScreenModal linkWsp={ linkWsp } setShowQR={setShowQR} /> : null
       }
+      <UserDialog />
       <div className="my-4 md:my-10 text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-center">Generador de links de Whatsapp</h1>
         <p className="mt-6 text-gray-600 text-sm md:text-base">¡Haz que tu negocio esté siempre a solo un clic de distancia!</p>
@@ -88,7 +91,20 @@ export default function WhatsappLink(){
                   Texto de bienvenida
                 </label>
 
-                <input className="input-border w-full mb-8 mt-2" defaultValue={text} placeholder="" onChange={handleText}></input>
+                <input className="input-border w-full mb-8 mt-2" defaultValue={text} onChange={handleText}></input>
+
+
+                <label className="text-lg font-black">
+                  Link personalizado (opcional)
+                </label>
+
+                <div className="mb-8 mt-2">
+                  <div className="flex input-border" style={{ padding: 0 }}>
+                    <span id="domain-input" className="bg-neutral-200">wsp.bio/</span>
+                    <input className="w-full outline-none pl-2" defaultValue={key} onChange={(event) => { setKey(event.target.value) }}></input>
+                  </div>
+                </div>
+
 
                 <div className='text-center'>
                   <button className='btn btn-primary'>Generar link de Whatsapp</button>
