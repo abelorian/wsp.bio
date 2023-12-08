@@ -15,6 +15,7 @@ export default function WhatsappLink(){
   const [dialCode, setDialCode] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [text, setText] = useState('')
+  const [customKey, setCustomKey] = useState('')
   const [linkWsp, setLinkWsp] = useState('')
   const [showQR, setShowQR] = useState('')
   let iti = undefined
@@ -25,6 +26,10 @@ export default function WhatsappLink(){
 
   const handleText = (event) => {
     setText(event.target.value)
+  }
+
+  const handleCustomKey = (event) => {
+    setCustomKey( limpiarString(event.target.value) )
   }
 
   useEffect(() => {
@@ -80,7 +85,7 @@ export default function WhatsappLink(){
                 </label>
 
                 <div className='mt-2 mb-8'>
-                  <input id="phone-number" className="input-border w-full mb-8 mt-2" type="text" maxLength={16} onChange={handlePhoneNumber}>
+                  <input id="phone-number" className="input-border w-full mb-8 mt-2 px-3" type="text" maxLength={16} onChange={handlePhoneNumber}>
                   </input>
                 </div>
 
@@ -88,7 +93,29 @@ export default function WhatsappLink(){
                   Texto de bienvenida
                 </label>
 
-                <input className="input-border w-full mb-8 mt-2" defaultValue={text} placeholder="" onChange={handleText}></input>
+                <input className="input-border w-full mb-8 mt-2 px-3" defaultValue={text} placeholder="" onChange={handleText}></input>
+
+                <label className="text-lg font-black">
+                  Tu marca
+                </label>
+
+                <div className="relative mt-2 mb-8 flex flex-wrap items-stretch input-border">
+                  <span
+                    className="flex items-center whitespace-nowrap px-3 py-[0.25rem] text-center text-base font-normal leading-[1.6] bg-slate-200"
+                    id="basic-addon3"
+                  >
+                    wsp.bio/
+                  </span>
+                  <input
+                    id="new-link-input"
+                    name="customKey"
+                    onChange={handleCustomKey}
+                    type="text"
+                    className="relative m-0 block w-[1px] min-w-0 flex-auto bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] outline-none transition duration-200 ease-in-out"
+                    aria-describedby="basic-addon3"
+                    value={customKey}
+                  />
+                </div>
 
                 <div className='text-center'>
                   <button className='btn btn-primary'>Generar link de Whatsapp</button>
@@ -154,3 +181,7 @@ const FullScreenModal = ({ linkWsp, setShowQR }) => {
 };
 
 
+function limpiarString(inputString) {
+  // Usamos una expresión regular para eliminar los caracteres no deseados.
+  return inputString.replace(/[^a-zA-Z0-9-_]/g, '');
+}
